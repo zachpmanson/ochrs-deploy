@@ -31,7 +31,7 @@ const deploy = (app: App) => {
 	if (file) {
 		const text = app.vault.getResourcePath(file);
 		const indexPath = text.split("Index.md")[0].slice(11);
-		const vaultDir = path.dirname(indexPath);
+		const vaultDir = path.dirname(indexPath.slice(indexPath.indexOf("/")));
 		exec(
 			`${vaultDir}/update-notes.sh`,
 			{ cwd: vaultDir },
